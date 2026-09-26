@@ -1,0 +1,24 @@
+{
+  "name": "the-menyu-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The server behind the battle-day app I'm building for CHIP CHOP, my dance team",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check auth.js && node --check config.js && node --check competition-state.js && node --check prelim-rules.js && node --check bracket-rules.js && node --check judging.js && node --check finance.js && node --check finance.test.js && node --check competition-rules.test.js && node --check event-configuration.js && node --check http.js && node --check input-validation.js && node --check csv-import.js && node --check pdf-import.js && node --check pdf-import.test.js && node --check pdf-export.js && node --check display-projection.js && node --check display-projection.test.js && node --check integrity.js && node --check integrity.test.js && node --check test.js && node --check persistence-contract.test.js && node --check auth-session.test.js && node --check concurrency.test.js && node --check vercel-handler.test.js && node --check production-config.test.js && node --check security.test.js && node --check supabase-contract.test.js && node --check supabase-http.test.js",
+    "test:integrity": "node integrity.test.js && node --test csv-import.test.js pdf-import.test.js competition-rules.test.js offline-actions.test.js display-projection.test.js finance.test.js",
+    "test:regression": "node test.js",
+    "test:persistence": "node persistence-contract.test.js",
+    "test:auth": "node auth-session.test.js",
+    "test:concurrency": "node concurrency.test.js",
+    "test:vercel-handler": "node vercel-handler.test.js",
+    "test:production-config": "node production-config.test.js",
+    "test:security": "node security.test.js",
+    "test:supabase": "node supabase-contract.test.js && node supabase-http.test.js",
+    "test": "npm run test:integrity && npm run test:persistence && npm run test:auth && npm run test:concurrency && npm run test:vercel-handler && npm run test:production-config && npm run test:security && npm run test:regression"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.4",
+    "pdf-parse": "^2.4.5"
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Menyu · CHIP CHOP Check-In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">✦</span><span>THE MENYU</span></div>
+        <div class="topbar-meta"><span class="live-dot"></span><span>Check-in desk</span><span class="date-label">Demo event</span></div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">ENTRIES / ARRIVAL</p>
+          <h1>Make the first hello easy.</h1>
+          <p class="intro">Search the entry list, confirm payment, and get every dancer through the door with less friction.</p>
+        </div>
+        <div class="hero-actions">
+          <label class="button button-dark file-button">Import CSV<input id="csv-input" type="file" accept=".csv,text/csv" /></label>
+          <button class="button button-light" id="demo-button">Load demo data</button>
+          <button class="button button-accent" id="export-button">Export updated CSV</button>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Attendance summary">
+        <article class="stat-card stat-total"><span class="stat-label">Total entries</span><strong id="total-count">0</strong><span class="stat-note">in this event</span></article>
+        <article class="stat-card stat-arrived"><span class="stat-label">Checked in</span><strong id="checked-count">0</strong><span class="stat-note" id="checked-note">0% of entries</span></article>
+        <article class="stat-card stat-ready"><span class="stat-label">Ready to arrive</span><strong id="ready-count">0</strong><span class="stat-note">paid and waiting</span></article>
+        <article class="stat-card stat-attention"><span class="stat-label">Needs attention</span><strong id="attention-count">0</strong><span class="stat-note">unpaid entries</span></article>
+      </section>
+
+      <section class="workspace">
+        <div class="toolbar">
+          <div class="search-wrap"><span class="search-icon">⌕</span><input id="search-input" type="search" placeholder="Search entry, group, or email" /></div>
+          <div class="filters" role="group" aria-label="Filter entries">
+            <button class="filter active" data-filter="all">All <span id="all-filter-count">0</span></button>
+            <button class="filter" data-filter="ready">Ready <span id="ready-filter-count">0</span></button>
+            <button class="filter" data-filter="checked">Checked in <span id="checked-filter-count">0</span></button>
+            <button class="filter" data-filter="attention">Unpaid <span id="attention-filter-count">0</span></button>
+          </div>
+        </div>
+        <div id="notice" class="notice" hidden></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Entry</th><th>Group</th><th>Contact</th><th>Payment</th><th>Arrival</th><th></th></tr></thead>
+            <tbody id="entries-body"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state" hidden><div class="empty-icon">⌁</div><h2>No entries found</h2><p>Try a different search or import another CSV.</p></div>
+        </div>
+      </section>
+      <footer><span>The Menyu / CHIP CHOP CSV prototype</span><span>Changes stay in this browser until you export.</span></footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

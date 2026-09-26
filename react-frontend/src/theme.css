@@ -1,0 +1,197 @@
+/* Shared visual foundation for CHIP CHOP.
+   Surface colors are deliberately restrained so event status carries the color. */
+:root {
+  color-scheme: light;
+  --ink: #21191e;
+  --ink-soft: #4b3d42;
+  --paper: #fff8ed;
+  --paper-2: #f8f0e2;
+  --concrete: #efe5d5;
+  --line: #d0c0a9;
+  --yellow: #ffe500;
+  --yellow-pale: #fff2a8;
+  --blue: #7a541b;
+  --blue-pale: #f6e4be;
+  --navy: var(--ink);
+  --mint: #2f6755;
+  --mint-pale: #e0eee3;
+  --coral: #b83c32;
+  --coral-pale: #f6e2dd;
+  --danger-bg: var(--coral);
+  --tan: #b1804d;
+  --muted: #665d57;
+  --radius-control: 6px;
+  --radius-card: 8px;
+  --radius-panel: 8px;
+  --shadow-raised: 0 2px 6px rgba(33, 25, 30, .12);
+  --shadow-stamp: 2px 2px 0 var(--ink);
+}
+
+html { background: var(--concrete); }
+body {
+  background: var(--concrete);
+  color: var(--ink);
+  -webkit-tap-highlight-color: rgba(255, 229, 0, .3);
+}
+
+button,
+input,
+select,
+textarea { touch-action: manipulation; }
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline-color: var(--blue);
+}
+
+.ui-button,
+.primary-button,
+.secondary-button,
+.danger-button,
+.small-button {
+  border-radius: var(--radius-control);
+  font-weight: 700;
+  transition: background-color .12s ease, border-color .12s ease, box-shadow .12s ease, color .12s ease;
+}
+
+.ui-button:hover:not(:disabled),
+.primary-button:hover:not(:disabled),
+.secondary-button:hover:not(:disabled),
+.danger-button:hover:not(:disabled),
+.small-button:hover:not(:disabled) { transform: none; }
+
+.ui-button:active:not(:disabled),
+.primary-button:active:not(:disabled),
+.secondary-button:active:not(:disabled),
+.danger-button:active:not(:disabled),
+.small-button:active:not(:disabled) { transform: none; }
+
+.ui-button--primary,
+.primary-button {
+  background: var(--yellow);
+  border-color: var(--ink);
+  color: var(--ink);
+  box-shadow: var(--shadow-stamp);
+}
+
+.ui-button--primary:hover:not(:disabled),
+.primary-button:hover:not(:disabled) { background: #f6d900; }
+
+.ui-button--secondary,
+.secondary-button { background: var(--paper); border-color: var(--ink-soft); }
+.ui-button--secondary:hover:not(:disabled),
+.secondary-button:hover:not(:disabled) { background: #f5ebd9; }
+
+.ui-button--danger,
+.danger-button { background: var(--coral); border-color: var(--ink); color: #fff8ed; }
+.ui-button--danger:hover:not(:disabled),
+.danger-button:hover:not(:disabled) { background: #9d3028; }
+
+.ui-input,
+.field input,
+.field select,
+.field textarea,
+.event-switcher select,
+.staff-field input,
+.connection-drawer input,
+.desk-toolbar select,
+.backup-create input,
+.ranking-override select,
+.ranking-override input {
+  border-color: var(--line);
+  border-radius: var(--radius-control);
+  background-color: var(--paper);
+}
+
+.ui-input:focus,
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--jade, #2f6755);
+  box-shadow: 0 0 0 3px rgba(47, 103, 85, .18);
+}
+
+.ui-badge,
+.status-pill { border-radius: var(--radius-control); }
+.ui-badge--good,
+.status-pill.good { background: var(--mint-pale); border-color: var(--mint); color: #1d4b40; }
+.ui-badge--warn,
+.status-pill.warn { background: #f6e4be; border-color: var(--blue); color: #5b3d13; }
+.ui-badge--danger,
+.status-pill.danger { background: var(--coral-pale); border-color: var(--coral); color: #7a221e; }
+
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  top: 10px;
+  left: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus-visible { transform: translateY(0); }
+
+.access-language,
+.ui-segmented,
+.division-control,
+.language-control {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--paper);
+}
+
+.access-language button,
+.ui-segmented button,
+.division-control button,
+.language-control button {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.access-language button.active,
+.ui-segmented button.active,
+.division-control button.active,
+.language-control button.active {
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--ink);
+}
+
+.access-language,
+.ui-segmented,
+.division-control,
+.language-control { border-width: 2px; padding: 0; }
+
+.access-language button,
+.ui-segmented button,
+.division-control button,
+.language-control button { min-height: 34px; border-radius: 0; }
+
+.menyu-sidebar,
+.pulse-header { background: var(--ink); }
+.menyu-workspace { background: var(--concrete); }
+
+.workspace-heading h1,
+.report-card-heading h2,
+.operations-card h2 { text-wrap: balance; }
+
+.workspace-heading.compact-heading.prelim-heading h1 { letter-spacing: .018em; }
+
+.report-card-heading > h2 { font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-button,
+  .primary-button,
+  .secondary-button,
+  .danger-button,
+  .small-button { transition: none; }
+}

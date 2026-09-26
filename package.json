@@ -1,0 +1,18 @@
+{
+  "name": "the-menyu",
+  "version": "0.1.0",
+  "private": true,
+  "engines": { "node": ">=20.16.0" },
+  "workspaces": [
+    "backend",
+    "react-frontend"
+  ],
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "build": "npm run build --workspace=the-menyu-react-frontend",
+    "check": "node --test tools/deployment-contract.test.js && npm run check --workspace=the-menyu-backend && npm run check --workspace=the-menyu-react-frontend",
+    "check:commits": "node tools/check-commit-messages.mjs",
+    "test": "npm test --workspace=the-menyu-backend && npm test --workspace=the-menyu-react-frontend",
+    "preflight:team-test": "node tools/team-test-preflight.mjs"
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Menyu Tournament Board Test</title>
+    <link rel="stylesheet" href="board.css" />
+  </head>
+  <body>
+    <main class="board-shell">
+      <header class="board-header">
+        <div>
+          <p class="eyebrow">THE MENYU / CHIP CHOP TEST BOARD</p>
+          <h1>Tournament control</h1>
+          <p class="intro">A lightweight staff workspace for seeded brackets, match progression, and the live timer preview.</p>
+        </div>
+        <a class="quiet-link" href="index.html">Back to check-in test</a>
+      </header>
+
+      <section class="setup-bar">
+        <label>Backend URL<input id="board-api" value="http://localhost:3000/api" /></label>
+        <label>Event ID<input id="board-event" placeholder="event_..." /></label>
+        <label>Division<select id="board-division"><option value="2v2">2v2</option><option value="under15">Under-15</option></select></label>
+        <label>Staff name<input id="board-staff" value="Tournament Staff" /></label>
+        <label>Role<input id="board-role" value="Tournament Board" /></label>
+        <button id="load-board" class="button primary">Load board</button>
+      </section>
+      <p id="board-message" class="message" role="status"></p>
+
+      <section class="board-grid">
+        <div class="stage-panel live-panel">
+          <div class="panel-label">LIVE DISPLAY PREVIEW</div>
+          <div class="live-art-slot">KANO ART / DISPLAY BACKGROUND PLACEHOLDER</div>
+          <div id="live-matchup" class="live-matchup">________ VS ________</div>
+          <div id="timer" class="timer">00:45</div>
+          <div class="timer-controls">
+            <button id="timer-start" class="button primary">Start</button>
+            <button id="timer-pause" class="button">Pause</button>
+            <button id="timer-reset" class="button">Reset</button>
+          </div>
+          <p class="microcopy">Local test timer. Final event timer behavior is still open for later decisions.</p>
+        </div>
+
+        <div class="stage-panel control-panel">
+          <div class="panel-heading"><div><div class="panel-label">MATCH CONTROL</div><h2 id="selected-title">Select a match</h2></div><span id="selected-state" class="state">Waiting</span></div>
+          <div id="selected-match" class="selected-match"><p>Load a bracket, then choose a match from the board.</p></div>
+          <div class="decision-controls">
+            <div class="decision-group"><span>Normal decision</span><button id="left-win" class="button side-button" disabled>Left wins</button><button id="right-win" class="button side-button" disabled>Right wins</button></div>
+            <div class="decision-group"><span>Tie-break decision</span><button id="left-tiebreak" class="button" disabled>Tie-break: left</button><button id="right-tiebreak" class="button" disabled>Tie-break: right</button></div>
+            <button id="undo-decision" class="button danger" disabled>Undo decision</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage-panel bracket-panel">
+        <div class="panel-heading"><div><div class="panel-label">SEEDED BRACKET</div><h2 id="bracket-title">No bracket loaded</h2></div><button id="generate-bracket" class="button">Generate / replace bracket</button></div>
+        <div id="bracket-board" class="bracket-board"><p class="empty">Load an event and generate a bracket to see the rounds.</p></div>
+      </section>
+    </main>
+    <script src="board.js?v=4"></script>
+  </body>
+</html>

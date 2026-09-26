@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Menyu Functional Test</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div><p class="kicker">FUNCTIONAL TEST SURFACE</p><h1>The Menyu</h1><p>Use this plain interface to exercise the CHIP CHOP event backend.</p></div>
+        <span id="connection" class="badge">Not connected</span>
+      </header>
+
+      <section class="panel setup">
+        <div class="panel-heading"><div><p class="kicker">01 / EVENT</p><h2>Start a test event</h2></div><span id="event-label">No event loaded</span></div>
+        <div class="form-grid">
+          <label>Backend URL<input id="api-base" value="http://localhost:3000/api" /></label>
+          <label>Event name<input id="event-name" value="Functional Test Event" /></label>
+          <label>Event time<input id="event-time" value="2026-09-20 18:00" /></label>
+          <label>Your name<input id="staff-name" value="Test Staff" /></label>
+          <label>Your custom role<input id="staff-role" value="Check-in Test" /></label>
+          <label>Judge 1 name<input id="judge-one" value="Judge One" /></label>
+          <label>Judge 2 name<input id="judge-two" value="Judge Two" /></label>
+        </div>
+        <button id="create-event" class="button primary">Create test event</button>
+        <p id="setup-message" class="message"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="kicker">02 / IMPORT</p><h2>Load the two test CSVs</h2></div><a href="../test-data/test-2v2.csv">2v2 CSV</a><a href="../test-data/test-under15.csv">U-15 CSV</a></div>
+        <div class="import-grid">
+          <div class="import-card"><h3>2v2 Battle</h3><p>Team name + member names + genre.</p><input id="file-2v2" type="file" accept=".csv" /><button data-import="2v2" class="button">Import 2v2</button></div>
+          <div class="import-card"><h3>Under-15 1v1</h3><p>Entry name + genre + region.</p><input id="file-under15" type="file" accept=".csv" /><button data-import="under15" class="button">Import U-15</button></div>
+        </div>
+        <p id="import-message" class="message"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="kicker">03 / CHECK-IN</p><h2>Registration records</h2></div><button id="refresh" class="button">Refresh</button></div>
+        <div class="tabs"><button class="tab active" data-bracket="2v2">2v2</button><button class="tab" data-bracket="under15">Under-15</button></div>
+        <div id="registrations" class="records"><p class="empty">Create an event and import a CSV to see records.</p></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="kicker">04 / SAME-DAY</p><h2>Add a walk-in</h2></div><span>Creates a same-day record</span></div>
+        <div class="form-grid same-day-form">
+          <label>Bracket<select id="walkin-bracket"><option value="2v2">2v2</option><option value="under15">Under-15</option></select></label>
+          <label>Team name / entry name<input id="walkin-name" placeholder="Team or battler name" /></label>
+          <label>Member names (2v2)<input id="walkin-members" placeholder="Battler 1, Battler 2" /></label>
+          <label>Date of birth (U-15)<input id="walkin-dob" placeholder="YYYY-MM-DD" /></label>
+        </div>
+        <button id="add-walkin" class="button primary">Create same-day registration</button>
+        <button id="add-spectator" class="button">Add one spectator</button>
+        <p id="walkin-message" class="message"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="kicker">05 / BRACKET + REPORT</p><h2>Run the next backend actions</h2></div><a class="button" href="board.html">Open tournament board test</a></div>
+        <div class="action-row"><button data-bracket-action="2v2" class="button">Generate 2v2 bracket</button><button data-bracket-action="under15" class="button">Generate U-15 bracket</button><button id="report" class="button">Show report</button><a id="csv-export" class="button" target="_blank">Combined CSV</a><a id="pdf-export" class="button" target="_blank">Combined PDF</a></div>
+        <pre id="output" class="output">Backend output will appear here.</pre>
+      </section>
+    </main>
+    <script src="app.js?v=5"></script>
+  </body>
+</html>

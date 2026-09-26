@@ -1,0 +1,24 @@
+.DS_Store
+**/.DS_Store
+.idea/
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.vercel/
+.env
+.env.*
+!.env.example
+backend/data.json
+backend/backups/
+supabase/.temp/
+supabase/.branches/
+*.log
+*.tmp
+*.tsbuildinfo
+backend/package-lock.json
+react-frontend/package-lock.json
+react-frontend/vite.config.js
+react-frontend/vite.config.d.ts
+The Menyu.app/Contents/MacOS/
+The Menyu.app/Contents/_CodeSignature/
